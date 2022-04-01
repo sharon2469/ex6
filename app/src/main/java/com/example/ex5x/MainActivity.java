@@ -27,17 +27,20 @@ public class MainActivity extends AppCompatActivity implements FragA.FragAListen
 		fragA = (FragA) getSupportFragmentManager().findFragmentByTag("FRAGA");
 		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
 
-//		FragB fragB;
-//		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-//		{
-//			getSupportFragmentManager().beginTransaction()
-//					.setReorderingAllowed(true)
-//					.add(R.id.fragContainer, FragB.class, null,"FRAGB")
-//					.addToBackStack("BBB")
-//					.commit();
-//			getSupportFragmentManager().executePendingTransactions();
-//		}
-//		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
+		if ((getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)){
+			if (fragB != null) {
+				getSupportFragmentManager().beginTransaction()
+						.show(fragB)
+						.addToBackStack(null)
+						.commit();
+			}
+			else {
+				getSupportFragmentManager().beginTransaction()
+						.add(R.id.fragContainer, FragB.class,null, "FRAGB")
+						.commit();
+			}
+			getSupportFragmentManager().executePendingTransactions();
+		}
 	}
 
 
@@ -123,16 +126,17 @@ public class MainActivity extends AppCompatActivity implements FragA.FragAListen
 		keepEd2 = savedInstanceState.getString("ed2");
 
 		FragB fragB;
+		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
+
 		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
 		{
 			getSupportFragmentManager().beginTransaction()
 					.setReorderingAllowed(true)
-					.add(R.id.fragContainer, FragB.class, null,"FRAGB")
+					.show(fragB)
 					.addToBackStack("BBB")
 					.commit();
 			getSupportFragmentManager().executePendingTransactions();
 		}
-		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
 		fragB.onNewClick(sum);
 
 		fragA.restoreEditTexts(keepEd1 ,keepEd2);
