@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public class FragB extends Fragment implements SeekBar.OnSeekBarChangeListener{
 
-	FragBListener listener;
+	FragBListener listener; // hold the mainactivity referance
 	private float lastResult;
 	private SeekBar seekBar;
 	private TextView  txtResult, txtEcample;
@@ -26,6 +26,7 @@ public class FragB extends Fragment implements SeekBar.OnSeekBarChangeListener{
 
 	@Override
 	public void onAttach(@NonNull Context context) {
+		//this connect our mainactivity with the B fragment when the context var is the mainactivity
 		try{
 			this.listener = (FragBListener)context;
 		}catch(ClassCastException e){
@@ -96,7 +97,7 @@ public class FragB extends Fragment implements SeekBar.OnSeekBarChangeListener{
 	}
 
 
-
+	//the interface of this fragment that include the methods
 	public interface FragBListener{
 		//put here methods you want to utilize to communicate with the hosting activity
 	}

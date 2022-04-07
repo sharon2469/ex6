@@ -18,12 +18,13 @@ import android.widget.EditText;
 
 
 public class FragA extends Fragment implements OnClickListener{
-	FragAListener listener;
+	FragAListener listener; // hold the mainactivity referance
 	private Button btAdd, btSub, btMul, btDiv, btClear;
 	private EditText edNum1, edNum2;
 
 	@Override
 	public void onAttach(@NonNull Context context) {
+		//this connect our mainactivity with the A fragment when the context var is the mainactivity
 		try{
 			this.listener = (FragAListener)context;
 		}catch(ClassCastException e){
@@ -111,7 +112,7 @@ public class FragA extends Fragment implements OnClickListener{
 	}
 
 
-
+	//the interface of this fragment that include the methods
 	public interface FragAListener{
 		public void operationButtonClicked(View view, String ed1, String ed2);
 	}
