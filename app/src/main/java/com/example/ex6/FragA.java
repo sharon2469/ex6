@@ -1,4 +1,4 @@
-package com.example.ex5x;
+package com.example.ex6;
 
 //import android.app.Fragment;
 import androidx.annotation.NonNull;
@@ -8,7 +8,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -64,7 +63,8 @@ public class FragA extends Fragment implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		listener.operationButtonClicked(v,edNum1.getText().toString(),edNum2.getText().toString());
+		int btId =  ((Button)v).getId();
+		listener.operationButtonClicked(btId, edNum1.getText().toString(),edNum2.getText().toString());
 	}
 
 
@@ -114,6 +114,6 @@ public class FragA extends Fragment implements OnClickListener{
 
 	//the interface of this fragment that include the methods
 	public interface FragAListener{
-		public void operationButtonClicked(View view, String ed1, String ed2);
+		public void operationButtonClicked(int operation, String ed1, String ed2);
 	}
 }

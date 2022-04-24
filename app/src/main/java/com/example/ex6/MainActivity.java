@@ -1,19 +1,18 @@
-package com.example.ex5x;
+package com.example.ex6;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements FragA.FragAListener, FragB.FragBListener{
+public class MainActivity extends AppCompatActivity implements FragA.FragAListener, FragB.FragBListener, SeekBarActivity.ISeekBarActivity {
+	public static String PROG = "progress";
+	public int resultPrecision = 2;
 
 	private FragA fragA;
 	private FragB fragB;
@@ -43,24 +42,44 @@ public class MainActivity extends AppCompatActivity implements FragA.FragAListen
 		}
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		getMenuInflater().inflate(R.menu.exit, menu);
 
-	//This command belongs to the Frag A
-	public void operationButtonClicked(View view, String ed1, String ed2) {
+		return true;
+	}
 
-		int btId, num1, num2;
-		keepEd1 = ed1;
-		keepEd2 = ed2;
-		String tempString;
-		if (!(view instanceof Button)) {
-			Log.e("Error:", "view is not an instance of Button");
-			return;
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch (item.getItemId()){
+			case R.id.menuExit:
+				MyExit newFragment = MyExit.newInstance();
+				newFragment.show(getSupportFragmentManager(), "exitDialog");
+				break;
+			case R.id.menuSetting:
+				SeekBarActivity settingsDialog = SeekBarActivity.newInstance();
+				Bundle bundle = new Bundle();
+				bundle.putInt(PROG, resultPrecision);
+				settingsDialog.setArguments(bundle);
+				settingsDialog.show(getSupportFragmentManager(), "settingsDialog");
+				break;
 		}
 
-		btId = ((Button)view).getId();
+
+		return  true;
+	}
+
+	//This command belongs to the Frag A
+	public void operationButtonClicked(int operation, String ed1, String ed2) {
+
+		int num1, num2;
+		keepEd1 = ed1;
+		keepEd2 = ed2;
+
 		num1 = Integer.valueOf(ed1);
 		num2 = Integer.valueOf(ed2);
 
-		switch (btId){
+		switch (operation){
 			case R.id.btAdd:
 				Log.i("Oparation","Add");
 				sum = num1 + num2;
@@ -99,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements FragA.FragAListen
 			getSupportFragmentManager().executePendingTransactions();
 		}
 		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
+		fragB.setResultForamt(String.valueOf((resultPrecision)));
 		fragB.onNewClick(sum);
 	}
 
@@ -141,6 +161,27 @@ public class MainActivity extends AppCompatActivity implements FragA.FragAListen
 
 		fragA.restoreEditTexts(keepEd1 ,keepEd2);
 
+
+	}
+
+	@Override
+	public void onSeekBarChanged(int progress) {
+		FragB fragB;
+		fragB = (FragB) getSupportFragmentManager().findFragmentByTag("FRAGB");
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+		{
+			getSupportFragmentManager().beginTransaction()
+					.setReorderingAllowed(true)
+					.show(fragB)
+					.addToBackStack("BBB")
+					.commit();
+			getSupportFragmentManager().executePendingTransactions();
+		}
+
+		//set the new format and the sum
+		resultPrecision = progress;
+		fragB.setResultForamt(String.valueOf(progress));
+		fragB.onNewClick(sum);
 
 	}
 }

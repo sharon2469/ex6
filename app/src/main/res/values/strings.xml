@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Calculator ex5</string>
+    <string name="app_name">Calculator ex6</string>
     <string name="mainactivity_textview_title">Ecercise 3: Simple calculator</string>
     <string name="mainactivity_textview_operand1">Operand1:</string>
     <string name="mainactivity_textview_operand2">Operand2:</string>
@@ -15,6 +15,10 @@
     <string name="min_result_precision">0</string>
     <string name="max_result_precision">5</string>
     <string name="seek_bar_textview_example">Example:</string>
+
+    <string name="menu_item_exit">Exit</string>
+    <string name="settings_precision">Set the numbers precision</string>
+
 
     <string name="ERROR_OPERANDS_NOT_VALID">Please enter numbers on both EditTexts</string>
     <string name="ERROR_DIVIDE_BY_ZERO">Cannot divide by zero</string>

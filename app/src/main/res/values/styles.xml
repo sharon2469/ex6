@@ -18,4 +18,12 @@
 
     </style>
 
+    <style name="SettingsDialog" parent="Theme.AppCompat.Light.Dialog.Alert"> <!-- Used for the buttons -->
+        <item name="android:textStyle">bold</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <!-- Used for the background -->
+        <item name="android:background">#BDBCBC</item>
+    </style>
+
 </resources>

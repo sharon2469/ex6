@@ -7,11 +7,11 @@
     android:padding="@dimen/activity_horizontal_margin"
     android:id="@+id/fragContainer"
     android:background="#000000"
-    tools:context="com.example.ex5x.MainActivity">
+    tools:context="com.example.ex6.MainActivity">
 
      <fragment
          android:id="@+id/fragA"
-         class="com.example.ex5x.FragA"
+         class="com.example.ex6.FragA"
          android:layout_width="353dp"
          android:layout_height="591dp"
          android:layout_marginStart="16dp"

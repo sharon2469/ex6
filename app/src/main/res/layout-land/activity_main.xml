@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/detailsElementBackground"
-    tools:context="com.example.ex5x.MainActivity">
+    tools:context="com.example.ex6.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragA"
-        class="com.example.ex5x.FragA"
+        class="com.example.ex6.FragA"
         android:tag="FRAGA"
         android:layout_width="373dp"
         android:layout_height="354dp"

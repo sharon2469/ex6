@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="368dp"
-        android:layout_height="214dp"
+        android:layout_height="154dp"
         android:layout_gravity="center"
         android:background="@drawable/txt_background"
         android:divider="@drawable/empty_tall_divider"
@@ -48,51 +48,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/min_result_precision"
-                    android:textColor="#FFC107"
-                    android:textSize="20sp" />
-
-                <SeekBar
-                    android:id="@+id/seekBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="25"
-                    android:max="5"
-                    android:progressTint="#FFC107"
-                    android:thumbTint="#FFC107"
-                    android:tickMarkTint="#000000" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/max_result_precision"
-                    android:textColor="#FFC107"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtEcample"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/seek_bar_textview_example"
-                android:textColor="#ffffff" />
-        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>
